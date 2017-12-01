@@ -21,20 +21,21 @@ var contactList = [
   ];
 
 router.get('/contacts', (req, res) => {
+    res.json(contactList)
+})
+router.get('/contacts?name=', (req, res) => {
     let name = req.query.name
-    let test
-    if(name!=test){
-        for (let i=0; i<contactList.length; i++)
-            if(name == contactList[i].name)
+    let text = []
+    text.push("Fail")
+        for (let i=0; i<contactList.length; i++) {
+            if(name == contactList[i].name){
                 res.json(contactList[i])
-    }
-    else
-    {
-        res.json(contactList)
-
-    }
+            }
+            else{
+                res.json(text)
+            }
 }
-)
+})
 
 
 router.get('/contacts/:id', (req, res) => {
