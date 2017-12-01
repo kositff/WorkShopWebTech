@@ -26,11 +26,11 @@ router.get('/contacts', (req, res) => {
     if(name!=test){
         for (let i=0; i<contactList.length; i++)
             if(name == contactList[i].name)
-                res.send(contactList[i])
+                res.json(contactList[i])
     }
     else
     {
-        res.send(contactList)
+        res.json(contactList)
 
     }
 }
@@ -39,12 +39,15 @@ router.get('/contacts', (req, res) => {
 
 router.get('/contacts/:id', (req, res) => {
     let id = req.params.id
-    res.send(contactList[id])
+    for(let i=0; i<contactList.length;i++){
+        if(id == contactList[i].id)
+            res.json(contactList[i])
+    }
     })
 
 router.delete('/contacts/:id', (req, res) =>{
     let id = req.params.id
-    res.send(contactList[id])
+    res.json(contactList[id])
     for(var i=0; i<contactList.length; i++) {
         if(contactList[i].id == id)
             contactList.splice(i, 1)
@@ -57,10 +60,10 @@ router.post('/contact', (req,res) => {
     a.push("fail.")
     if(!isEmptyOrSpaces(list.name) && (!isEmptyOrSpaces(list.email))){
         contactList.push(list)
-        res.send(contactList)
+        res.json(contactList)
     }
     else{
-        res.send(a)
+        res.json(a)
     }
     
     
@@ -70,16 +73,14 @@ router.put('/contact/:id', (req,res) => {
     let id = req.params.id
     let list  = req.body
     for(var i=0; i<contactList.length; i++) {
-        if(contactList[i].id == id)
-            {
+        if(contactList[i].id == id){
             contactList[i].name = list.name
             contactList[i].surname = list.surname
             contactList[i].email = list.email
             contactList[i].phone = list.phone
             contactList[i].url = list.url
             contactList[i].notes = list.notes
-
-            res.json(contactList[id])
+            res.json(contactList[i])
             break
         }
     }
