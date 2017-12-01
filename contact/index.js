@@ -79,8 +79,7 @@ router.put('/contact/:id', (req,res) => {
             contactList[i].url = list.url
             contactList[i].notes = list.notes
 
-            res.json(contactList[id])
-            break
+            res.send(contactList[i])
         }
     }
     
