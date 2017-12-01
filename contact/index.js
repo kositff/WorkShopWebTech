@@ -39,6 +39,13 @@ router.get('/contacts/:id', (req, res) => {
     res.send(contactList[id])
     })
 
-
+router.delete('/contacts/:id', (req, res) =>{
+    let id = req.params.id
+    res.send(contactList[id])
+    for(var i=0; i<contactList.length; i++) {
+        if(contactList[i].id == id)
+            contactList.splice(i, 1)
+    }
+})
 
 module.exports = router
