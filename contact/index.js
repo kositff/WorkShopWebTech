@@ -81,8 +81,13 @@ router.put('/contact/:id', (req,res) => {
             contactList[i].phone = list.phone
             contactList[i].url = list.url
             contactList[i].notes = list.notes
+<<<<<<< HEAD
             res.json(contactList[i])
             break
+=======
+
+            res.send(contactList[i])
+>>>>>>> c9b7c7a58c5b3d3b51b82a9a0793b9b04c953350
         }
     }
     
