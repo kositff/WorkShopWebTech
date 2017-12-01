@@ -66,4 +66,25 @@ router.post('/contact', (req,res) => {
     
 })
 
+router.put('/contact/:id', (req,res) => {
+    let id = req.params.id
+    let list  = req.body
+    for(var i=0; i<contactList.length; i++) {
+        if(contactList[i].id == id)
+            {
+            contactList[i].name = list.name
+            contactList[i].surname = list.surname
+            contactList[i].email = list.email
+            contactList[i].phone = list.phone
+            contactList[i].url = list.url
+            contactList[i].notes = list.notes
+
+            res.json(contactList[id])
+            break
+        }
+    }
+    
+    
+})
+
 module.exports = router
