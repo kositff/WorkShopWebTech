@@ -49,7 +49,7 @@ router.get('/contacts/:id', (req, res) => {
 router.delete('/contacts/:id', (req, res) =>{
     let id = req.params.id
     res.json(contactList[id])
-    for(var i=0; i<contactList.length; i++) {
+    for(let i=0; i<contactList.length; i++) {
         if(contactList[i].id == id)
             contactList.splice(i, 1)
     }
@@ -73,7 +73,7 @@ router.post('/contact', (req,res) => {
 router.put('/contact/:id', (req,res) => {
     let id = req.params.id
     let list  = req.body
-    for(var i=0; i<contactList.length; i++) {
+    for(let i=0; i<contactList.length; i++) {
         if(contactList[i].id == id){
             contactList[i].name = list.name
             contactList[i].surname = list.surname
